@@ -4,8 +4,8 @@ Repositorio donde subo las ejercitaciones de todas aquellas materias que requier
 
 ## Primer Año
 ### Primer Cuatrimestre
-* [Entornos de Programación](completar)
-* [Programación I](completar)
+* [Entornos de Programación](https://github.com/winttita/TUIA/tree/main/Primero/Entorno/de/Programacion)
+* [Programación I](https://github.com/winttita/TUIA/tree/main/Primero/Programacion/I)
 
 ### Segundo Cuatrimestre
-* [Programación 2](completar)
+* [Programación 2](https://github.com/winttita/TUIA/tree/main/Primero/Programacion/II))
