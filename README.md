@@ -1,1 +1,11 @@
-# TUIA
+# TUIA - TECNICATURA EN INTELIGENCIA ARTIFICIAL.
+
+Repositorio donde subo las ejercitaciones de todas aquellas materias que requieran código de la TUIA en UNR
+
+## Primer Año
+### Primer Cuatrimestre
+* [Entornos de Programación](completar)
+* [Programación I](completar)
+
+### Segundo Cuatrimestre
+* [Programación 2](completar)
