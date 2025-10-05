@@ -4,8 +4,8 @@ Repositorio donde subo las ejercitaciones de todas aquellas materias que requier
 
 ## Primer Año
 ### Primer Cuatrimestre
-* [Entornos de Programación](completar)
-* [Programación I](completar)
+* [Entornos de Programación](./Primero/Entorno%20de%20Programacion/)
+* [Programación I](./Primero/Programacion%20I/)
 
 ### Segundo Cuatrimestre
-* [Programación 2](completar)
+* [Programación 2](./Primero/Programacion%20II/)
