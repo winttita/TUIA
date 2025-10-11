@@ -16,7 +16,7 @@ def calcula_triangular(n: int) -> int:
     
 ## 02 #############################################################
 
-def fibonacci(n: int):
+def fibonacci(n: int) -> int:
     if n == 0 or n == 1:
         return n
     else:

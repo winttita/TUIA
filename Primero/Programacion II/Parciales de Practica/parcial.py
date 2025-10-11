@@ -1,5 +1,27 @@
 #!/bin/python3
+## Ejercicio 1 ######################################################################################
+def contar_ocurrencias(l: list, n: int) -> int:
+    if not l:
+        return 0
+    if n == l[0]:
+        return 1 + contar_ocurrencias(l[1:], n)
+    else:
+        return contar_ocurrencias(l[1:], n)
 
+# print(contar_ocurrencias([1,2,3,3,3,5,3,6,7,3,3], 3))
+
+## Ejercicio 2 ######################################################################################
+def f(n: int)-> None:
+    for i in range(n): # O(n)
+        print(f"Elemento {i}")
+        for j in range(1, n + 1): # O(n + 1) = O(n)
+            print(f"Sub-elemento {j} en la iteración {i}")
+    for i in range(3,0,-1): # O(1) constante
+        print(i)
+    print("Salimos de la función!")
+# La complejidad total del algoritmo es # O(n^2)
+
+## Ejercicio 3 ######################################################################################
 class Evento:
 
     def __init__(self,
