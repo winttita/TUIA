@@ -1,6 +1,6 @@
 #!/bin/python3
 ## Ejercicio 1 ######################################################################################
-def contar_ocurrencias(l: list, n: int) -> int:
+def contar_ocurrencias(l: list[int], n: int) -> int:
     if not l:
         return 0
     if n == l[0]:
