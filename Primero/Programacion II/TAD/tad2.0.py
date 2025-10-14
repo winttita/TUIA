@@ -1,11 +1,13 @@
+
 ## Ejercicio 1 ############################################################################################################################################
 
 from typing import Any
 
-class _Nodo:
-    def __init__(self, dato: Any = None, prox=None):
+class _Nodo2:
+    def __init__(self, dato: Any = None, prox = None, ant = None):
         self.dato = dato
         self.prox = prox
+        self.ant = ant
 
     def __str__(self):
         return str(self.dato)
@@ -18,8 +20,8 @@ class _Nodo:
             print(nodo)
             nodo = nodo.prox
 
-class ListaEnlazada:
-    """Modela una lista enlazada."""
+class ListaDoblementeEnlazada:
+    """Modela una lista DOBLEMENTE enlazada."""
 
     def __init__(self) -> None:
         """Crea una lista enlazada vacía."""
@@ -27,6 +29,8 @@ class ListaEnlazada:
         self.prim = None
         # Cantidad de elementos de la lista
         self.len = 0
+        #Referencia al ultimo elemento de la lista (None si esta vacia)
+        self.ult = None
 
     def insert(self, i: int, x: Any) -> None:
         """Inserta el elemento x en la posición i.
@@ -35,21 +39,14 @@ class ListaEnlazada:
         if i < 0 or i > self.len:
             print("Posición inválida")
             return
-        nuevo = _Nodo(x)
+        nuevo = _Nodo2(x)
         if i == 0:
-            # Caso particular : insertar al principio
-            nuevo.prox = self.prim
-            self.prim = nuevo
-        else:
-            # Buscar el nodo anterior a la posición deseada
-            n_ant = self.prim
-            for pos in range(1, i):
-                n_ant = n_ant.prox
-            # Intercalar el nuevo nodo
-            nuevo.prox = n_ant.prox
-            n_ant.prox = nuevo
-        self.len += 1
+            if self.len == 0:
+                self.prim = self.ult = nuevo
+            else:
+                
 
+            
     def pop(self, i: int | None = None) -> Any:
         """Elimina el nodo de la posición i, y devuelve el dato contenido.
         Si i está fuera de rango, se muestra un mensaje de error y se
