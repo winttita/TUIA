@@ -1,0 +1,54 @@
+CREATE DATABASE P2_EJ1
+
+USE P2_EJ1
+
+GO
+
+
+CREATE TABLE EMPLEADO(
+Legajo varchar(80), 
+Nombre varchar(100),
+Domicilio varchar(100),
+Telefono varchar(20),
+Sector varchar(80),
+Sueldo money
+);
+GO
+
+CREATE TABLE SERCICIO_TECNICO(
+serviciotecnico_id int identity(1,1),
+nombre varchar(100) NOT NULL,
+telefono varchar(20), 
+direccion varchar(100) NOT NULL,
+CONSTRAINT PK_servicio_tec_id PRIMARY KEY (serviciotecnico_id),
+);
+GO
+
+ALTER TABLE EMPLEADO ALTER COLUMN Legajo varchar(80) NOT NULL
+ALTER TABLE EMPLEADO ALTER COLUMN Nombre varchar(100) NOT NULL
+ALTER TABLE EMPLEADO ALTER COLUMN Domicilio varchar(100) NOT NULL
+ALTER TABLE EMPLEADO
+ADD CONSTRAINT PK_empleado_legajo PRIMARY KEY (Legajo)
+
+INSERT INTO EMPLEADO (Legajo, Nombre, Domicilio, Telefono, Sector, Sueldo) VALUES
+('B9912', 'PABLO RAMIREZ', '3 DE FEBRERO 992', '3416653220', 'PRODUCCION', 250000)
+GO
+
+SELECT * FROM EMPLEADO
+
+INSERT INTO EMPLEADO (Legajo, Nombre, Domicilio, Telefono, Sector, Sueldo) VALUES
+('B9914', 'PABLO FREIRE', '3 DE FEBRERO 993', '3416653221', 'ADMINISTRACION', 250000),
+('B9917', 'ESTELA RAMIREZ', '3 DE FEBRERO 994', '3416653222', 'ADMINISTRACION', 450000),
+('B9919', 'PEDRITO AVALLE', '3 DE FEBRERO 995', '3416653223', 'PRODUCCION', 150000)
+GO
+
+SELECT * FROM EMPLEADO
+
+INSERT INTO SERCICIO_TECNICO (nombre, telefono, direccion) VALUES
+('Electro LUX SA', '3415854565', 'del cairo 3400'),
+('Martinez maquinarias SRL', '3416589636', 'Riobamba 4567'),
+('Fast Reparaciones SA', '3417485962', 'Plegrinni 200')
+
+SELECT * FROM SERCICIO_TECNICO
+
+SELECT * FROM SERVICIO_TECNICO
