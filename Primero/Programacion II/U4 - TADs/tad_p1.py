@@ -157,3 +157,40 @@ class ListaEnlazada:
         self.len += lista.len
 
 ## Ejercicio 3 ############################################################################################################################################
+
+    def remover_todos(self, x: Any) -> int:
+        nuevo = _Nodo(x)
+        ant = self.prim
+        cant = 0
+        pos = 0
+        while ant.prox is not None:
+            if nuevo.dato == ant.dato:
+                self.pop(pos)
+                cant += 1
+                self.len -= 1
+            ant = ant.prox
+            pos += 1
+        return cant
+
+## Ejercicio 4 ############################################################################################################################################           
+
+    def duplicar(self, x: Any) -> None:
+        nuevo = _Nodo(x)
+        ant = self.prim
+        pos = 0
+        while ant.prox is not None:
+            if nuevo.dato == ant.dato:
+                self.insert(pos+1, nuevo)
+                self.len += 1
+        return
+
+## Ejercicio 5 ############################################################################################################################################
+
+    def invertir_lista(self) -> None:
+        invert = ListaEnlazada()
+        temp = self.prim.prox
+        ant = self.prim
+        while ant.prox is not None:
+            invert.prim = temp
+            temp = ant
+            ant = ant.prox
