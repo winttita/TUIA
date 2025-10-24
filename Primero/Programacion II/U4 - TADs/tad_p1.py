@@ -103,23 +103,18 @@ class ListaEnlazada:
             n_ant.prox = n_act.prox
             self.len -= 1
 
-    def __len__(self):
-        """
-        Muestra la longitud de la lista
-        """
+    def __len__(self) -> int:
+        """Muestra la longitud de la lista."""
         return self.len
 
     def __str__(self):
-        """
-            Muestra el contenido de la lista enlazada.
-        """
+        """Muestra el contenido de la lista enlazada."""
         ret = '['
         n_ant = self.prim
         for no in range(self.len):
             ret += str(n_ant.dato) + ', '
 
         ret = ret[:-2] + ']'
-
         return ret
         
     def index(self, x: Any) -> int:
@@ -188,9 +183,12 @@ class ListaEnlazada:
 
     def invertir_lista(self) -> None:
         invert = ListaEnlazada()
-        temp = self.prim.prox
         ant = self.prim
         while ant.prox is not None:
-            invert.prim = temp
-            temp = ant
-            ant = ant.prox
+            if not invert:
+                invert.append(ant)
+                ant = ant.prox
+            else:
+                invert.insert(0, ant)
+                ant = ant.prox
+        pass
