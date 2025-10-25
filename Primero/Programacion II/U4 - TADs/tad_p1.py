@@ -3,11 +3,11 @@
 from typing import Any
 
 class _Nodo:
-    def __init__(self, dato: Any = None, prox=None):
+    def __init__(self, dato: Any = None, prox=None) -> None:
         self.dato = dato
         self.prox = prox
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.dato)
 
     def ver_lista(nodo) -> None:
@@ -107,16 +107,17 @@ class ListaEnlazada:
         """Muestra la longitud de la lista."""
         return self.len
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Muestra el contenido de la lista enlazada."""
         ret = '['
         n_ant = self.prim
         for no in range(self.len):
             ret += str(n_ant.dato) + ', '
-
+            n_ant = n_ant.prox
         ret = ret[:-2] + ']'
         return ret
-        
+    
+    
     def index(self, x: Any) -> int:
         nodo = self.prim
         i = 0
@@ -133,15 +134,17 @@ class ListaEnlazada:
             n_nuevo = _Nodo(x)
             self.prim = n_nuevo
             self.len += 1
+            return
         for no in range(self.len -1):
             n_ant = n_ant.prox
         n_nuevo = _Nodo(x)
         n_ant.prox = n_nuevo
         self.len += 1
+        return
 
 ## Ejercicio 2 ############################################################################################################################################
 
-    def extend(self, lista: ListaEnlazada) -> None:
+    def extend(self, lista: 'ListaEnlazada') -> None:
         n_ant = self.prim
 
         for i in range(self.len - 1):
@@ -158,11 +161,10 @@ class ListaEnlazada:
         ant = self.prim
         cant = 0
         pos = 0
-        while ant.prox is not None:
+        while ant is not None:
             if nuevo.dato == ant.dato:
                 self.pop(pos)
                 cant += 1
-                self.len -= 1
             ant = ant.prox
             pos += 1
         return cant
@@ -173,22 +175,22 @@ class ListaEnlazada:
         nuevo = _Nodo(x)
         ant = self.prim
         pos = 0
-        while ant.prox is not None:
+        while ant is not None:
             if nuevo.dato == ant.dato:
-                self.insert(pos+1, nuevo)
-                self.len += 1
+                self.insert(pos+1, nuevo.dato)
         return
 
 ## Ejercicio 5 ############################################################################################################################################
 
     def invertir_lista(self) -> None:
         invert = ListaEnlazada()
-        ant = self.prim
-        while ant.prox is not None:
+        act = self.prim
+        while act is not None:
             if not invert:
-                invert.append(ant)
-                ant = ant.prox
+                invert.append(act.dato)
+                act = act.prox
             else:
-                invert.insert(0, ant)
-                ant = ant.prox
-        pass
+                invert.insert(0, act.dato)
+                act = act.prox
+        self.prim = invert.prim
+        return
