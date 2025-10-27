@@ -232,20 +232,29 @@ class ListaEnlazada:
         l2 = ListaEnlazada()
         act = l.prim
         ult = None
-        pos = 0
         while act is not None:
-            if act.dato.upper() == "HOLA":
-                nuevo = _Nodo("Mundo")
-                if l2.prim is None:
-                    l2.prim = nuevo
-                else:
-            elif l2.prim is None:
-                nuevo = _Nodo(act.dato)
+            nuevo = _Nodo(act.dato)
+            if l2.prim is None:
                 l2.prim = nuevo
+                ult = nuevo
             else:
-                pass
+                ult.prox = nuevo
+                ult = nuevo
+                
+            if act.dato.upper() == palabra_objetivo.upper():
+                extra = _Nodo(palabra_insertar)
+                ult.prox = extra
+                ult = extra
             act = act.prox
+        return l2
+## Ejercicio 9 ############################################################################################################################################
 
+    def eliminar_palabra_con(self, l: 'ListaEnlazada', caracter: str) -> 'ListaEnlazada':
+        l2 = ListaEnlazada()
+        act = l.prim
+        ult = None
+        while act is not None:
+            pass
 
 ## Ejercicio 6 ############################################################################################################################################
 class _Nodo2:
