@@ -254,7 +254,19 @@ class ListaEnlazada:
         act = l.prim
         ult = None
         while act is not None:
-            pass
+            nodo = _Nodo(act.dato)
+            if isinstance(act.dato, str):
+                if caracter not in nodo.dato:                     
+                    if l2.prim is None:
+                        l2.prim = nodo
+                        ult = nodo
+                    else:
+                        ult.prox = nodo
+                        ult = nodo
+            else:
+                print(f"El dato: {act.dato} no es un caracter. Se omite.")
+            act = act.prox
+        return l2
 
 ## Ejercicio 6 ############################################################################################################################################
 class _Nodo2:
