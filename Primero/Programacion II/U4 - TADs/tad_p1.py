@@ -43,7 +43,7 @@ class ListaEnlazada:
     def insert(self, i: int, x: Any) -> None:
         """Inserta el elemento x en la posición i.
         Si la posición es inválida, imprime un error y retorna inmediatamente.
-        """
+            """
         if i < 0 or i > self.len:
             print("Posición inválida")
             return
@@ -198,7 +198,7 @@ class ListaEnlazada:
         invert = ListaEnlazada()
         act = self.prim
         while act is not None:
-            if not invert:
+            if invert.prim is None:
                 invert.append(act.dato)
                 act = act.prox
             else:
