@@ -1,5 +1,6 @@
 from typing import Any
 from tad_p1 import ListaEnlazada
+from tad_p1 import Nodo
 
 ## Ejercicio 1 ##################################################################################################################
 class Stack:
@@ -62,6 +63,44 @@ class LinkedStack:
         else:
             return False
 
+## Ejercicio 4 ##################################################################################################################
+    def balanceado(self, expresion: str) -> bool:
+        """Funcion que recibe una expresión matemática (en forma de string) y devuelve
+        True si los paréntesis (), corchetes [] y llaves {} están correctamente balanceados, False en caso contrario."""
+        pass
+
+## Ejercicio 5 ##################################################################################################################
+class Queue:
+    """ Representa a una cola, con operaciones de encolar y desencolar. El primero en ser encolado es también es el primero
+    en ser desencolado."""
+    def __init__(self) -> None:
+        self.items = []
+
+    def insert(self, x: Any) -> None:
+        self.items.append(x)
+        return
+
+    def remove(self) -> Any | None:
+        if self.items.isEmpty():
+            print("La cola esta vacia.")
+            return
+        return self.items.pop(0)
+
+    def isEmpty(self) -> bool:
+        if len(self.items) == 0:
+            return True
+        return False
+        
+## Ejercicio 6 ##################################################################################################################
+class LinkedQueue:
+    """Representa una Queue, con operaciones de insertar, remover y preguntar si esta vacia. Implementamos con una ListaEnlazada."""
+    def __init__(self) -> None:
+        self.length = 0
+        self.head = None
+
+    def isEmpty(self) -> bool:
+        return (self.length == 0)
+         
 ## Ejercicio 3 ##################################################################################################################
 class PilaConMaximo(Stack):
 
