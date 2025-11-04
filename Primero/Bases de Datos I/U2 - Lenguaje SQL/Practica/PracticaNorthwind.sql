@@ -1,10 +1,12 @@
 SELECT * FROM Customers
 SELECT * FROM Orders
 SELECT * FROM [Order Details]
-SELECT * FROM Territories
 SELECT * FROM Products
 SELECT * FROM Categories
 SELECT * FROM Employees
+SELECT * FROM Territories
+
+
 
 --------------------------------------- Ejercicio 1)_
 --Se necesita obtener un listado de todos los pedidos con el nombre del cliente (nombre de la empresa).
@@ -86,3 +88,38 @@ JOIN Orders O ON O.CustomerID = C.CustomerID
 GROUP BY C.CompanyName
 HAVING COUNT(O.ShipCountry) > 1
 ORDER BY PedidosAMasDeUnPais DESC;
+
+----------------------------------------------------------------------- PARTE 2
+--------------------------------------- Ejercicio 1)_
+--Obtener un reporte que informe cuanto vendió cada empleado a cada cliente, mostrar solo las ventas que superen los $15.000.
+SELECT E.EmployeeID, E.FirstName, C.CompanyName, SUM((OD.UnitPrice * OD.Quantity) * (1 - OD.Discount)) AS Ventas_por_clientes
+FROM Employees E
+JOIN Orders O ON O.EmployeeID = E.EmployeeID
+JOIN Customers C ON C.CustomerID = O.CustomerID
+JOIN [Order Details] OD ON OD.OrderID = O.OrderID
+GROUP BY E.EmployeeID, E.FirstName, C.CompanyName
+HAVING SUM((OD.UnitPrice * OD.Quantity) * (1 - OD.Discount)) > 15000;
+
+--------------------------------------- Ejercicio 2)_
+--Obtener las ventas mensuales por categoría de producto: 
+--		a. Unir categorías, productos, pedidos y detalles 
+--		b. Agrupar por año y por mes 
+--		c. Calcular el total vendido y el promedio mensual.
+SELECT C.CategoryName, MONTH(O.OrderDate) AS MES, YEAR(O.OrderDate) AS ANIO, SUM((OD.UnitPrice * OD.Quantity) * (1 - OD.Discount)) AS [Total Vendido], AVG((OD.UnitPrice * OD.Quantity) * (1 - OD.Discount)) AS [Promedio Ventas]
+FROM [Order Details] OD
+JOIN Products P ON P.ProductID = OD.ProductID
+JOIN Categories C ON C.CategoryID = P.CategoryID
+JOIN Orders O ON O.OrderID = OD.OrderID
+GROUP BY C.CategoryName, MONTH(O.OrderDate), YEAR(O.OrderDate)
+ORDER BY C.CategoryName, ANIO, MES;
+
+--------------------------------------- Ejercicio 3)_
+--Obtener del resultado de la ultima consulta, solo las ventas del año 1998
+SELECT C.CategoryName, MONTH(O.OrderDate) AS MES, YEAR(O.OrderDate) AS ANIO, SUM((OD.UnitPrice * OD.Quantity) * (1 - OD.Discount)) AS [Total Vendido], AVG((OD.UnitPrice * OD.Quantity) * (1 - OD.Discount)) AS [Promedio Ventas]
+FROM [Order Details] OD
+JOIN Products P ON P.ProductID = OD.ProductID
+JOIN Categories C ON C.CategoryID = P.CategoryID
+JOIN Orders O ON O.OrderID = OD.OrderID
+WHERE YEAR(O.OrderDate) = '1998'
+GROUP BY C.CategoryName, MONTH(O.OrderDate), YEAR(O.OrderDate)
+ORDER BY C.CategoryName, ANIO, MES;

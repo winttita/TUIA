@@ -1,6 +1,6 @@
 from typing import Any
 from tad_p1 import ListaEnlazada
-from tad_p1 import Nodo
+from tad_p1 import _Nodo
 
 ## Ejercicio 1 ##################################################################################################################
 class Stack:
@@ -93,14 +93,57 @@ class Queue:
         
 ## Ejercicio 6 ##################################################################################################################
 class LinkedQueue:
-    """Representa una Queue, con operaciones de insertar, remover y preguntar si esta vacia. Implementamos con una ListaEnlazada."""
+    """Representa una Queue, con operaciones de insertar, remover y preguntar si esta vacia. Implementamos con Nodos."""
     def __init__(self) -> None:
         self.length = 0
         self.head = None
+        self.last = None
 
     def isEmpty(self) -> bool:
         return (self.length == 0)
-         
+    
+    def insert(self, x: Any) -> None:
+        nodo = _Nodo(x)
+        if self.head is None:
+            self.head = nuevo
+            self.last = nuevo
+        else:
+            self.last.prox = nuevo
+            self.last = nuevo
+        self.length += 1
+        return
+
+    def remove(self) -> Any:
+        if self.items.is_empty():
+            print("La cola esta vacia.")
+            return
+        eliminado = self.head
+        self.head.prox = self.head
+        self.length -= 1
+        return eliminado
+
+## Ejercicio 7 ##################################################################################################################
+class Cliente:
+    def __init__(self, nombre: str, cant_cartas: int = 1)-> None:
+        self.nombre = nombre
+        self.cant_cartas = cant_cartas
+
+class ColaGeneralizada:
+    """Representa una cola generalizada de clientes. Implementada con Nodos."""
+    def __init__(self) -> None:
+        self.length = 0
+        self.head = None
+        self.last = None
+
+    def isEmpty(self) -> bool:
+        return (self.length == 0)
+    
+    def insert(self, cliente: Cliente) -> None:
+        pass
+
+    def remove(self) -> Any:
+        pass
+
 ## Ejercicio 3 ##################################################################################################################
 class PilaConMaximo(Stack):
 
