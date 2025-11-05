@@ -120,7 +120,7 @@ class LinkedQueue:
         return
 
     def remove(self) -> Any:
-        if self.items.is_empty():
+        if self.is_empty():
             print("La cola esta vacia.")
             return
         eliminado = self.head
@@ -144,7 +144,7 @@ class ColaGeneralizada:
         self.head = None
         self.last = None
 
-    def isEmpty(self) -> bool:
+    def is_Empty(self) -> bool:
         return self.length == 0
 
     def insert(self, cliente: Cliente) -> None:
@@ -159,15 +159,27 @@ class ColaGeneralizada:
         return
         
     def remove(self) -> Any:
-        if self.items.is_empty():
+        if self.is_Empty():
             print("La cola esta vacia.")
             return
         eliminado = self.head
-        cartas = 5 if self.head.cant_cartas                                                                       ############################ Terminar
-        print(f"El cliente {self.head.dato.nombre} ha sido atandido/a. Despachadas {self.head.dato.cant_cartas}")
-        self.head.prox = self.head
+        cartas = 5 if self.head.dato.cant_cartas > 5  else self.head.dato.cant_cartas                 ############################ Terminar
+        print(f"El cliente {self.head.dato.nombre} ha sido atandido/a. Despachadas {cartas}")
+        self.head = self.head.prox
         self.length -= 1
         return eliminado
+
+correo = ColaGeneralizada()
+correo.insert(Cliente("Ana", 1))
+correo.insert(Cliente("Facu", 1))
+correo.insert(Cliente("Seba", 2))
+correo.insert(Cliente("Joe", 6))
+correo.insert(Cliente("Pablo", 9))
+correo.insert(Cliente("Ana", 1))
+correo.insert(Cliente("Facu", 1))
+correo.insert(Cliente("Seba", 2))
+while not correo.is_Empty():
+    correo.remove()
 
 
 ## Ejercicio 3 ##################################################################################################################
