@@ -15,7 +15,7 @@ def es_primo(x: int) -> bool:
             return True
 
 class _Nodo:
-    def __init__(self, dato: Any = None, prox=None) -> None:
+    def __init__(self, dato: Any = None, prox: '_Nodo' | None =None) -> None:
         self.dato = dato
         self.prox = prox
 
