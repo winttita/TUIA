@@ -163,23 +163,28 @@ class ColaGeneralizada:
             print("La cola esta vacia.")
             return
         eliminado = self.head
-        cartas = 5 if self.head.dato.cant_cartas > 5  else self.head.dato.cant_cartas                 ############################ Terminar
+        if self.head.dato.cant_cartas > 5:
+            cartas = 5
+            resto =  self.head.dato.cant_cartas - 5
+            self.insert(Cliente(self.head.dato.nombre, resto))
+        else:
+            cartas = self.head.dato.cant_cartas
         print(f"El cliente {self.head.dato.nombre} ha sido atandido/a. Despachadas {cartas}")
         self.head = self.head.prox
         self.length -= 1
         return eliminado
 
-correo = ColaGeneralizada()
-correo.insert(Cliente("Ana", 1))
-correo.insert(Cliente("Facu", 1))
-correo.insert(Cliente("Seba", 2))
-correo.insert(Cliente("Joe", 6))
-correo.insert(Cliente("Pablo", 9))
-correo.insert(Cliente("Ana", 1))
-correo.insert(Cliente("Facu", 1))
-correo.insert(Cliente("Seba", 2))
-while not correo.is_Empty():
-    correo.remove()
+    # correo = ColaGeneralizada()
+    # correo.insert(Cliente("Ana", 1))
+    # correo.insert(Cliente("Facu", 1))
+    # correo.insert(Cliente("Seba", 2))
+    # correo.insert(Cliente("Joe", 6))
+    # correo.insert(Cliente("Pablo", 9))
+    # correo.insert(Cliente("Ana", 1))
+    # correo.insert(Cliente("Facu", 1))
+    # correo.insert(Cliente("Seba", 2))
+    # while not correo.is_Empty():
+    #     correo.remove()
 
 
 ## Ejercicio 3 ##################################################################################################################
