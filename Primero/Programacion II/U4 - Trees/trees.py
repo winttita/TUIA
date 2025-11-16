@@ -63,8 +63,52 @@ class BinaryTree:
             pos_der += 1 + self.right.altura()
         altura = max(pos_der, pos_izq)
         return altura
+## Ejercicio 3 ##################################################################################################################
+    
+    ## Recursivos ############################################################################################################### 
+
+    def preOrder(self) -> None:
+        """Recorre el arbol nodo por nodo recursivamente en modo PreOrder.
+        Primero la raiz, luego el hijo izquierdo y por ultimo el derecho (si es que los hay)."""
+
+        print(self.cargo)
+
+        if self.left is not None:
+            self.left.preOrder()
+
+        if self.right is not None:
+            self.right.preOrder()
+
+    def inOrder(self) -> None:
+        """Recorre el arbol nodo por nodo recursivamente en modo inOrder.
+        Primero el hijo izquierdo, luego la raiz y por ultimo el derecho (si es que los hay)."""
+
+        if self.left is not None:
+            self.left.inOrder()
+
+        print(self.cargo)
         
+        if self.right is not None:
+            self.right.inOrder()
+        
+    def posOrder(self) -> None:
+        """Recorre el arbol nodo por nodo recursivamente en modo posOrder.
+        Primero el hijo izquierdo, luego el derecho (si es que los hay) y por ultimo la raiz."""
+
+        if self.left is not None:
+            self.left.posOrder()
+        
+        if self.right is not None:
+            self.right.posOrder()
+        
+        print(self.cargo)
+
+    ## Iterativos ###############################################################################################################
+
+
+
 ## Ejercicio 1 ##################################################################################################################
 arbol1 = BinaryTree(2)  # SOLO TIENE LA RAIZ
 arbol2 = BinaryTree(2, BinaryTree(3, BinaryTree(4, BinaryTree(5))))  # h = 3. Analogia con una lista de rango 3
-arbol3 = BinaryTree(2, BinaryTree(3, BinaryTree(5)))  # h = 1
+arbol3 = BinaryTree(2, BinaryTree(3, BinaryTree(7), BinaryTree(15, BinaryTree(1)))) 
+arbol4 = BinaryTree(50, BinaryTree(2, BinaryTree(3, BinaryTree(7), BinaryTree(15, BinaryTree(1)))), BinaryTree(20, BinaryTree(18), BinaryTree(25, BinaryTree(22))))
