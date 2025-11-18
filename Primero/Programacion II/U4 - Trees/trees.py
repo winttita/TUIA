@@ -1,5 +1,36 @@
 from typing import Any
 
+class Stack:
+    """Representa un stack con las operaciones de apilar, desapilar y verificar si esta vacia."""
+
+    def __init__(self) -> None:
+        """Crea una pila vacia"""
+        self.items: list[Any] = []
+
+    def push(self, item: Any) -> None:
+        """Agrega un item al stack"""
+        self.items.append(item)
+        return
+
+    def pop(self) -> Any:
+        """Desapila un elemento y lo devuelve. Si la pila esta vacı́a, imprime un mensaje de error y termina la ejecucion inmediatamente."""
+        if self.isEmpty():
+            print("La pila esta vacia")
+            return
+        return self.items.pop()
+
+    def peek(self) -> Any:
+        """Analogo al .pop(), este metodo devuelve el el ultimo elemento de la pila, sin sacarlo de esta (desapilarlo)."""
+        if self.isEmpty():
+            print("La pila esta vacia")
+            return
+        return self.items[-1]
+
+    def isEmpty(self) -> bool:
+        """Devuelve True si la pila esta vacı́a, y False si no."""
+        if self.items:
+            return False
+        return True
 
 class BinaryTree:
     def __init__(self, cargo, left=None, right=None):
@@ -66,7 +97,6 @@ class BinaryTree:
 ## Ejercicio 3 ##################################################################################################################
     
     ## Recursivos ############################################################################################################### 
-
     def preOrder(self) -> None:
         """Recorre el arbol nodo por nodo recursivamente en modo PreOrder.
         Primero la raiz, luego el hijo izquierdo y por ultimo el derecho (si es que los hay)."""
@@ -104,11 +134,48 @@ class BinaryTree:
         print(self.cargo)
 
     ## Iterativos ###############################################################################################################
+    def preOrderIter(self) -> None:
+        """Recorre el arbol nodo por nodo iterativamente en modo PreOrder.
+        Primero la raiz, luego el hijo izquierdo y por ultimo el derecho (si es que los hay)."""
+        stack = Stack()
+        stack.push(self.cargo)
+        while not stack.isEmpty():
+            actual = stack.pop()
+            pass
+                    
+    
+    def inOrderIter(self) -> None:
+        """Recorre el arbol nodo por nodo iterativamente en modo inOrder.
+        Primero el hijo izquierdo, luego la raiz y por ultimo el hijo derecho (si es que los hay)."""
+        pass
 
-
-
+    
+    def posOrderIter(self) -> None:
+        """Recorre el arbol nodo por nodo iterativamente en modo posOrder.
+        Primero el hizo izquierdo, luego el derecho (si es que los hay) y por ultimo la raiz."""
+        pass        
+    
 ## Ejercicio 1 ##################################################################################################################
 arbol1 = BinaryTree(2)  # SOLO TIENE LA RAIZ
 arbol2 = BinaryTree(2, BinaryTree(3, BinaryTree(4, BinaryTree(5))))  # h = 3. Analogia con una lista de rango 3
 arbol3 = BinaryTree(2, BinaryTree(3, BinaryTree(7), BinaryTree(15, BinaryTree(1)))) 
 arbol4 = BinaryTree(50, BinaryTree(2, BinaryTree(3, BinaryTree(7), BinaryTree(15, BinaryTree(1)))), BinaryTree(20, BinaryTree(18), BinaryTree(25, BinaryTree(22))))
+
+## Ejercicio 4 ##################################################################################################################
+def copy(arbol: BinaryTree) -> BinaryTree | None:
+    """Recibe un arbol y devuelve otro arbol identico (copiado) al que es pasado como parametro."""    
+    arbol2 = BinaryTree(arbol.cargo, arbol.left, arbol.right)
+    return arbol2
+
+## Ejercicio 5 ##################################################################################################################
+def invertir(arbol: BinaryTree) -> None:
+    """Intercambia los hijos derechos por los hijos izquierdos en todos los nodos."""
+    aux = 0
+    if arbol.left is not None:
+        aux = arbol.left
+        arbol.left = arbol.right
+        arbol.right = aux
+        if isinstance(arbol.left, BinaryTree):
+            invertir(arbol.left)
+    pass
+        
