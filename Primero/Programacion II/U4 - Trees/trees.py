@@ -170,12 +170,13 @@ def copy(arbol: BinaryTree) -> BinaryTree | None:
 ## Ejercicio 5 ##################################################################################################################
 def invertir(arbol: BinaryTree) -> None:
     """Intercambia los hijos derechos por los hijos izquierdos en todos los nodos."""
-    aux = 0
+    if arbol is None:
+        return
+    arbol.left, arbol.right = arbol.right, arbol.left
     if arbol.left is not None:
-        aux = arbol.left
-        arbol.left = arbol.right
-        arbol.right = aux
-        if isinstance(arbol.left, BinaryTree):
-            invertir(arbol.left)
-    pass
-        
+        invertir(arbol.left)
+    if arbol.right is not None:
+        invertir(arbol.right)
+    return
+
+## Ejercicio 6 ##################################################################################################################
