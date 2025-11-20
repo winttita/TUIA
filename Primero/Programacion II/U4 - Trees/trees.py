@@ -180,3 +180,31 @@ def invertir(arbol: BinaryTree) -> None:
     return
 
 ## Ejercicio 6 ##################################################################################################################
+def sumatoria(arbol: BinaryTree) -> int:
+    """Recibe un arbol binario que contiene numeros en sus nodos y devuelve la suma de todos estos."""
+    total = arbol.cargo
+    if arbol.left is not None:
+        total += sumatoria(arbol.left)
+    if arbol.right is not None:
+        total += sumatoria(arbol.right)
+    return total
+
+## Ejercicio 7 ##################################################################################################################
+def sumatoria_rango(arbol: BinaryTree, M: int, inicio: int, final: int, nivel: int = 0) -> int:
+    """Recibe un árbol binario A cuyos nodos contienen números y
+    que dado un entero M, una clave inicio y una clave final, calcula la suma de todos los
+    números del árbol que se encuentren entre inicio y final, a lo sumo hasta el nivel M."""
+    suma = 0
+    if nivel > M:
+        return 0
+    if inicio <= arbol.cargo <= final:
+        suma = arbol.cargo
+    if arbol.left is not None:
+        suma += sumatoria_rango(arbol.left, M, inicio, final, nivel + 1)
+    if arbol.right is not None:
+        suma += sumatoria_rango(arbol.right, M, inicio, final, nivel + 1)
+    return suma
+
+## Ejercicio 9 ##################################################################################################################
+class BSTree(BinaryTree):
+    pass
