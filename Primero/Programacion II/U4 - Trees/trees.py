@@ -1,5 +1,22 @@
 from typing import Any
 
+
+def menor(item1: Any, item2: Any) -> Any:
+    """Devuelve menor elemento entre dos valores."""
+    if item1 > item2:
+        return item2
+    else:
+        return item1
+
+
+def mayor(item1: Any, item2: Any) -> Any:
+    """Devuelve mayor elemento entre dos valores."""
+    if item1 < item2:
+        return item2
+    else:
+        return item1
+
+
 class Stack:
     """Representa un stack con las operaciones de apilar, desapilar y verificar si esta vacia."""
 
@@ -31,6 +48,7 @@ class Stack:
         if self.items:
             return False
         return True
+
 
 class BinaryTree:
     def __init__(self, cargo, left=None, right=None):
@@ -94,9 +112,10 @@ class BinaryTree:
             pos_der += 1 + self.right.altura()
         altura = max(pos_der, pos_izq)
         return altura
-## Ejercicio 3 ##################################################################################################################
-    
-    ## Recursivos ############################################################################################################### 
+
+    ## Ejercicio 3 ##################################################################################################################
+
+    ## Recursivos ###############################################################################################################
     def preOrder(self) -> None:
         """Recorre el arbol nodo por nodo recursivamente en modo PreOrder.
         Primero la raiz, luego el hijo izquierdo y por ultimo el derecho (si es que los hay)."""
@@ -117,20 +136,20 @@ class BinaryTree:
             self.left.inOrder()
 
         print(self.cargo)
-        
+
         if self.right is not None:
             self.right.inOrder()
-        
+
     def posOrder(self) -> None:
         """Recorre el arbol nodo por nodo recursivamente en modo posOrder.
         Primero el hijo izquierdo, luego el derecho (si es que los hay) y por ultimo la raiz."""
 
         if self.left is not None:
             self.left.posOrder()
-        
+
         if self.right is not None:
             self.right.posOrder()
-        
+
         print(self.cargo)
 
     ## Iterativos ###############################################################################################################
@@ -142,30 +161,37 @@ class BinaryTree:
         while not stack.isEmpty():
             actual = stack.pop()
             pass
-                    
-    
+
     def inOrderIter(self) -> None:
         """Recorre el arbol nodo por nodo iterativamente en modo inOrder.
         Primero el hijo izquierdo, luego la raiz y por ultimo el hijo derecho (si es que los hay)."""
         pass
 
-    
     def posOrderIter(self) -> None:
         """Recorre el arbol nodo por nodo iterativamente en modo posOrder.
         Primero el hizo izquierdo, luego el derecho (si es que los hay) y por ultimo la raiz."""
-        pass        
-    
+        pass
+
+
 ## Ejercicio 1 ##################################################################################################################
 arbol1 = BinaryTree(2)  # SOLO TIENE LA RAIZ
-arbol2 = BinaryTree(2, BinaryTree(3, BinaryTree(4, BinaryTree(5))))  # h = 3. Analogia con una lista de rango 3
-arbol3 = BinaryTree(2, BinaryTree(3, BinaryTree(7), BinaryTree(15, BinaryTree(1)))) 
-arbol4 = BinaryTree(50, BinaryTree(2, BinaryTree(3, BinaryTree(7), BinaryTree(15, BinaryTree(1)))), BinaryTree(20, BinaryTree(18), BinaryTree(25, BinaryTree(22))))
+arbol2 = BinaryTree(
+    2, BinaryTree(3, BinaryTree(4, BinaryTree(5)))
+)  # h = 3. Analogia con una lista de rango 3
+arbol3 = BinaryTree(2, BinaryTree(3, BinaryTree(7), BinaryTree(15, BinaryTree(1))))
+arbol4 = BinaryTree(
+    50,
+    BinaryTree(2, BinaryTree(3, BinaryTree(7), BinaryTree(15, BinaryTree(1)))),
+    BinaryTree(20, BinaryTree(18), BinaryTree(25, BinaryTree(22))),
+)
+
 
 ## Ejercicio 4 ##################################################################################################################
 def copy(arbol: BinaryTree) -> BinaryTree | None:
-    """Recibe un arbol y devuelve otro arbol identico (copiado) al que es pasado como parametro."""    
+    """Recibe un arbol y devuelve otro arbol identico (copiado) al que es pasado como parametro."""
     arbol2 = BinaryTree(arbol.cargo, arbol.left, arbol.right)
     return arbol2
+
 
 ## Ejercicio 5 ##################################################################################################################
 def invertir(arbol: BinaryTree) -> None:
@@ -179,6 +205,7 @@ def invertir(arbol: BinaryTree) -> None:
         invertir(arbol.right)
     return
 
+
 ## Ejercicio 6 ##################################################################################################################
 def sumatoria(arbol: BinaryTree) -> int:
     """Recibe un arbol binario que contiene numeros en sus nodos y devuelve la suma de todos estos."""
@@ -189,8 +216,11 @@ def sumatoria(arbol: BinaryTree) -> int:
         total += sumatoria(arbol.right)
     return total
 
+
 ## Ejercicio 7 ##################################################################################################################
-def sumatoria_rango(arbol: BinaryTree, M: int, inicio: int, final: int, nivel: int = 0) -> int:
+def sumatoria_rango(
+    arbol: BinaryTree, M: int, inicio: int, final: int, nivel: int = 0
+) -> int:
     """Recibe un árbol binario A cuyos nodos contienen números y
     que dado un entero M, una clave inicio y una clave final, calcula la suma de todos los
     números del árbol que se encuentren entre inicio y final, a lo sumo hasta el nivel M."""
@@ -205,6 +235,30 @@ def sumatoria_rango(arbol: BinaryTree, M: int, inicio: int, final: int, nivel: i
         suma += sumatoria_rango(arbol.right, M, inicio, final, nivel + 1)
     return suma
 
+
 ## Ejercicio 9 ##################################################################################################################
 class BSTree(BinaryTree):
-    pass
+    """Clase particular de Arbol Binario donde en cada nodo, el elemento de la izquierda es menor y el derecha mayor que el."""
+
+    def __init__(self, cargo: Any, left: Any = None, right: Any = None):
+        super().__init__(cargo, left, right)
+
+    def menor_mayor(self) -> Any:
+        """Devuelve el menor y el mayor elemento del arbol."""
+        super().menor_mayor()
+
+    def buscar(self, elemento) -> bool:
+        """Si el elemento esta en el arbol devuelve True sino, False."""
+        if elemento == self.cargo:
+            return True
+        izq = False
+        der = False
+        if elemento > self.cargo and self.right is not None:
+            der = self.right.buscar(elemento)
+        if elemento < self.cargo and self.left is not None:
+            izq = self.left.buscar(elemento)
+
+        return izq or der
+
+    def insertar(self, item: Any) -> None:
+        pass
