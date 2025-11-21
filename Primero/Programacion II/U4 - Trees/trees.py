@@ -243,9 +243,17 @@ class BSTree(BinaryTree):
     def __init__(self, cargo: Any, left: Any = None, right: Any = None):
         super().__init__(cargo, left, right)
 
-    def menor_mayor(self) -> Any:
+    def menor_mayor(self) -> tuple:
         """Devuelve el menor y el mayor elemento del arbol."""
-        super().menor_mayor()
+        nodo_act = self.cargo
+        while nodo_act.left is not None:
+            nodo_act = nodo_act.left
+        menor = nodo_act
+        while nodo_act.right is not None:
+            nodo_act = nodo_act.right
+        mayor= nodo_act
+
+        return menor, mayor
 
     def buscar(self, elemento) -> bool:
         """Si el elemento esta en el arbol devuelve True sino, False."""
@@ -261,4 +269,15 @@ class BSTree(BinaryTree):
         return izq or der
 
     def insertar(self, item: Any) -> None:
-        pass
+        """Inserta el item."""
+        if item < self.cargo:
+            if self.left is None:
+                self.left = BSTree(item)
+            else:
+                self.right.insertar(item)
+        elif item > self.cargo:
+            if self.right is None:
+                self.right = BSTree(item)
+            else:
+                self.right.insertar(item)
+        return
