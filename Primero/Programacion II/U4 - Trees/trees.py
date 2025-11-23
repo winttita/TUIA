@@ -235,14 +235,14 @@ def sumatoria_rango(
         suma += sumatoria_rango(arbol.right, M, inicio, final, nivel + 1)
     return suma
 
-
+        
 ## Ejercicio 9 ##################################################################################################################
 class BSTree(BinaryTree):
     """Clase particular de Arbol Binario donde en cada nodo, el elemento de la izquierda es menor y el derecha mayor que el."""
 
     def __init__(self, cargo: Any, left: Any = None, right: Any = None):
         super().__init__(cargo, left, right)
-
+        
     def menor_mayor(self) -> tuple:
         """Devuelve el menor y el mayor elemento del arbol."""
         nodo_act = self.cargo
@@ -281,3 +281,63 @@ class BSTree(BinaryTree):
             else:
                 self.right.insertar(item)
         return
+    
+    def obtener_valores(self) -> list:
+        """Devuelve una lista con los valores del arbol ordenados (PreOrder)"""
+        valores = []
+
+        valores.append(self.cargo)
+        
+        if self.left:
+            valores += self.left.obtener_valores()
+        if self.right:
+            valores += self.right.obtener_valores()
+        return valores
+    
+def copy2(arbol: BSTree | None) -> BSTree | None:
+    """Recibe un arbol binario de busqueda y devuelve otro arbol identico (copiado) al que es pasado como parametro."""
+    if arbol is None:
+        return None
+    
+    nuevo_izq = copy2(arbol.left)
+    nuevo_der = copy2(arbol.right)
+   
+    arbol_copiado = BSTree(arbol.cargo, nuevo_izq, nuevo_der)
+   
+    return arbol_copiado
+
+## Ejercicio 10 ##################################################################################################################
+def combinar(arbol1: BSTree | None, arbol2: BSTree | None) -> BSTree | None:
+    """Funcion que combina 2 arboles binarios de busqueda en uno solo."""
+    if arbol1 is None:
+        return copy2(arbol2)
+    elif arbol2 is None:
+        return copy2(arbol1)
+    arbol3 = copy2(arbol1)
+    for valor in arbol2.obtener_valores():
+        arbol3.insertar(valor)
+    return arbol3
+
+## Ejercicio 11 ##################################################################################################################
+def borrar_raiz(arbol: BSTree | None) -> BSTree | None:
+    """Dado un árbol binario de búsqueda, esta función debería devolver
+    un nuevo árbol binario de búsqueda que contenga los mismos datos, a excepcion de la raíz."""
+    if arbol is None:
+        return
+    arbol_aux = combinar(arbol.left, arbol.right)
+    return arbol_aux
+
+## Ejercicio 12 ##################################################################################################################
+def borrar_valor(arbol: BSTree | None, valor: Any) -> BSTree | None:
+    """Devuelve un arbol binario de busqueda sin el valor pasado como argumento."""
+    if arbol is None:
+        return
+
+    if arbol.cargo == valor:
+        return borrar_raiz(arbol)
+    elif valor > arbol.cargo:
+        arbol.right = borrar_valor(arbol.right, valor)
+    else:
+        arbol.left = borrar_valor(arbol.right, valor)
+    
+    return arbol
