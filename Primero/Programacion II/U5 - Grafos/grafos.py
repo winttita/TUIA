@@ -178,7 +178,42 @@ def induce(G: Grafo | None, U: set) -> Grafo | None:
 ## Ejercicio 6 ##################################################################################################################
 def is_induced_subgraph(G: Grafo, H: Grafo) -> bool:
     """Devuelve true si H es un sub-grafo inducido de G para algun conjunto de vertices."""
+    if not is_subgraph(G, H):
+        return False
+    vertices_h = set(H.adjacencias.keys())
+    for vertice in H.adjacencias:
+        aristas_h = H.adjacencias[vertice]
+        aristas_g = G.adjacencias[vertice]
+        comunes = vertices_h & aristas_g
+        if aristas_h != comunes:
+            return False
+    return True
+
+## Ejercicio 7 ##################################################################################################################
+def is_complete(G: Grafo | None) -> bool | None:
+    """Devuelve true si un grafo es completo, false de lo contrario."""
+    if G is None:
+        return
+    conexiones = len(G.adjacencias.keys()) - 1 
+    for vertice in G.adjacencias:
+        if len(G.adjacencias[vertice]) != conexiones:
+            return False
+    return True
+
+## Ejercicio 8 ##################################################################################################################
+def subsets_size_k(l: list, k: int) -> list[set] | None:
+    if not l:
+        return None
+    if k == 0:
+        return []
+    if len(l) == 0:
+        pass
+    
+
+
+def has_clique(G: Grafo, k: int) -> bool:
     pass
+
 
 # Ejemplo de uso
 grafo = Grafo()
