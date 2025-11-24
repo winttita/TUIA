@@ -67,12 +67,13 @@ class Grafo:
     """Conjunto de vértices (o nodos) y un conjunto de aristas (o arcos, o relaciones)."""
     def __init__(self) -> None:
         """Crea un grafo vacio."""
-        self.adjacencias: dict{set} = {} 
+        self.adjacencias: dict[set] = {} 
 
     def add_node(self, vertice: Any) -> None:
         """Agrega un nodo al grafo."""
         if vertice not in self.adjacencias:
             self.adjacencias[vertice] = set()
+            return
         else:
             print(f"El vertice {vertice} ya existe.")
         return
@@ -194,26 +195,92 @@ def is_complete(G: Grafo | None) -> bool | None:
     """Devuelve true si un grafo es completo, false de lo contrario."""
     if G is None:
         return
-    conexiones = len(G.adjacencias.keys()) - 1 
+    conexiones = len(G.adjacencias) - 1 
     for vertice in G.adjacencias:
         if len(G.adjacencias[vertice]) != conexiones:
             return False
     return True
 
 ## Ejercicio 8 ##################################################################################################################
-def subsets_size_k(l: list, k: int) -> list[set] | None:
-    if not l:
-        return None
+def subsets_of_size_k(lista: list[Any], k: int) -> list[list[Any]]:
+    """
+    Devuelve una lista con todos los subconjuntos posibles de tamaño k.
+    Estrategia recursiva: Incluir o Excluir el primer elemento.
+    """
+    # Caso Base 1: Ya elegí todos los que necesitaba (éxito)
     if k == 0:
-        return []
-    if len(l) == 0:
-        pass
+        return [[]]
+        # Caso Base 2: No me quedan elementos para elegir y todavía necesito k (fracaso)
+    if not lista:
+        return []  
+    # Separamos cabeza (el primero) y cola (el resto)
+    cabeza = lista[0]
+    cola = lista[1:]
     
+    # Opción A: INCLUYO la cabeza
+    # Busco k-1 elementos en el resto
+    con_cabeza = subsets_of_size_k(cola, k - 1)
+    # A cada grupito que encontré, le agrego la cabeza al principio
+    con_cabeza = [[cabeza] + grupo for grupo in con_cabeza]
+    
+    # Opción B: EXCLUYO la cabeza
+    # Busco k elementos en el resto (la cabeza se queda afuera)
+    sin_cabeza = subsets_of_size_k(cola, k)
+    
+    # Unimos los dos mundos
+    return con_cabeza + sin_cabeza    
 
+def es_clique(G: Grafo, grupo: list) -> bool:
+    """
+    Verifica si TODOS los nodos del grupo son vecinos entre sí.
+    """
+    n = len(grupo)
+    # Doble bucle para comparar todos contra todos
+    for i in range(n):
+        for j in range(i + 1, n): # Empezamos en i+1 para no repetir pares ni comparar con uno mismo
+            v1 = grupo[i]
+            v2 = grupo[j]
+            
+            # Si encuentro UN solo par que no son amigos, YA NO es clique.
+            if not G.are_adyacent(v1, v2):
+                return False
+                
+    # Si pasé todas las pruebas, ¡es un clique!
+    return True
 
 def has_clique(G: Grafo, k: int) -> bool:
-    pass
-
+    """
+    Decide si existe algún clique de tamaño k en el grafo.
+    """
+    # 1. Obtener todos los nodos
+    nodos = G.get_nodes()
+    
+    # 2. Generar todos los candidatos posibles (usando la función que te pasé antes)
+    candidatos = subsets_of_size_k(nodos, k)
+    
+    # 3. Probar uno por uno
+    for grupo in candidatos:
+        if es_clique(G, grupo):
+            return True # ¡Encontré uno! No necesito buscar más.
+            
+    # 4. Si probé todos y ninguno sirvió...
+    return False
+            
+## Ejercicio 9 ##################################################################################################################
+def complement(G: Grafo) -> Grafo:
+    """Devuelve el grafo complementario a G."""
+    complemento = Grafo()
+    nodos = G.get_nodes()
+    for nodo in nodos:
+        complemento.add_node(nodo)
+    for i in range(len(nodos)):    
+        for j in range(i+1, len(nodos)):
+            v1 = nodos[i]
+            v2 = nodos[j]
+            
+            if not G.are_adyacent(v1, v2):
+                complemento.add_edge(v1, v2)
+    return complemento    
 
 # Ejemplo de uso
 grafo = Grafo()
