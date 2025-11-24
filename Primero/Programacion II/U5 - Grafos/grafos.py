@@ -1,6 +1,6 @@
 from typing import Any
 
-class Grafo:
+class Grafo1:
     """Conjunto de vértices (o nodos) y un conjunto de aristas (o arcos, o relaciones)."""
     def __init__(self) -> None:
         """Crea un grafo vacio."""
@@ -62,8 +62,201 @@ class Grafo:
         if vertice in self.vertices:
             return True
         return False
+class Grafo1:
+    """Conjunto de vértices (o nodos) y un conjunto de aristas (o arcos, o relaciones)."""
+    def __init__(self) -> None:
+        """Crea un grafo vacio."""
+        self.vertices = [] #Lista de vertices
+        self.aristas = {} #Diccionario donde la clave es un vertice y el valor una lista con vertices con los que este forma una arista 
 
-    def get_edges
+    def add_node(self, vertice: Any) -> None:
+        """Agrega un nodo al grafo."""
+        if vertice not in self.vertices:
+            self.vertices.append(vertice)
+            self.aristas[vertice] = []
+        return
+
+    def add_edge(self, vertice1: Any, vertice2: Any) -> None:
+        """Agrega una arista entre los vertices 1 y 2 pasados como argumento."""
+        self.add_node(vertice1)
+        self.add_node(vertice2)
+        if vertice1 not in self.aristas[vertice2]:
+            self.aristas[vertice1].append(vertice2)
+        if vertice2 not in self.aristas[vertice1]:
+            self.aristas[vertice2].append(vertice1)
+        return
+    
+    def get_adjacent(self, vertice: Any) -> list[Any]:
+        """Devuelve una lista de todos los vertices adyacentes al vetice pasado como argumento."""
+        return self.aristas[vertice]
+
+    def get_nodes(self) -> list[Any]:
+        """Devuelve una lista con todos los vertices del grafo."""
+        return self.vertices
+
+    def remove_node(self, vertice: Any) -> None:
+        """Remueve el vertice (si existe) y tambien sus aristas adyacentes."""
+        if vertice in self.vertices:
+            self.vertices.remove(vertice)
+            for vert in self.aristas[vertice]:
+                self.aristas[vert].remove(vertice)
+            self.aristas.pop[vertice]
+        else:
+            print("El vertice no se encuentra en el grafo.")
+        return
+
+    def remove_edge(self, vertice1: Any, vertice2: Any) -> None:
+        """Remueve (si es que existe) la arista entre el vertice1 y el vertice2."""
+        if vertice1 in self.aristas[vertice2]:
+            if self.are_adyacent(vertice1, vertice2):
+                self.aristas[vertice2].remove(vertice1)
+                self.aristas[vertice1].remove(vertice2)
+        return
+
+    def are_adyacent(self, vertice1: Any, vertice2: Any) -> bool:
+        """Devuelve True si los vertices son adyacentes, de lo contrario devuelve False."""
+        if vertice1 in self.aristas[vertice2]: # Al ser grafos simples, puedo preguntar por cualquiera de los vertices
+            return True
+        return False
+
+    def is_node(self, vertice) -> bool:
+        """Devuelve True si el vertice pertenece al grafo, False de lo contrario."""
+        if vertice in self.vertices:
+            return True
+        return False
+class Grafo1:
+    """Conjunto de vértices (o nodos) y un conjunto de aristas (o arcos, o relaciones)."""
+    def __init__(self) -> None:
+        """Crea un grafo vacio."""
+        self.vertices = [] #Lista de vertices
+        self.aristas = {} #Diccionario donde la clave es un vertice y el valor una lista con vertices con los que este forma una arista 
+
+    def add_node(self, vertice: Any) -> None:
+        """Agrega un nodo al grafo."""
+        if vertice not in self.vertices:
+            self.vertices.append(vertice)
+            self.aristas[vertice] = []
+        return
+
+    def add_edge(self, vertice1: Any, vertice2: Any) -> None:
+        """Agrega una arista entre los vertices 1 y 2 pasados como argumento."""
+        self.add_node(vertice1)
+        self.add_node(vertice2)
+        if vertice1 not in self.aristas[vertice2]:
+            self.aristas[vertice1].append(vertice2)
+        if vertice2 not in self.aristas[vertice1]:
+            self.aristas[vertice2].append(vertice1)
+        return
+    
+    def get_adjacent(self, vertice: Any) -> list[Any]:
+        """Devuelve una lista de todos los vertices adyacentes al vetice pasado como argumento."""
+        return self.aristas[vertice]
+
+    def get_nodes(self) -> list[Any]:
+        """Devuelve una lista con todos los vertices del grafo."""
+        return self.vertices
+
+    def remove_node(self, vertice: Any) -> None:
+        """Remueve el vertice (si existe) y tambien sus aristas adyacentes."""
+        if vertice in self.vertices:
+            self.vertices.remove(vertice)
+            for vert in self.aristas[vertice]:
+                self.aristas[vert].remove(vertice)
+            self.aristas.pop[vertice]
+        else:
+            print("El vertice no se encuentra en el grafo.")
+        return
+
+    def remove_edge(self, vertice1: Any, vertice2: Any) -> None:
+        """Remueve (si es que existe) la arista entre el vertice1 y el vertice2."""
+        if vertice1 in self.aristas[vertice2]:
+            if self.are_adyacent(vertice1, vertice2):
+                self.aristas[vertice2].remove(vertice1)
+                self.aristas[vertice1].remove(vertice2)
+        return
+
+    def are_adyacent(self, vertice1: Any, vertice2: Any) -> bool:
+        """Devuelve True si los vertices son adyacentes, de lo contrario devuelve False."""
+        if vertice1 in self.aristas[vertice2]: # Al ser grafos simples, puedo preguntar por cualquiera de los vertices
+            return True
+        return False
+
+    def is_node(self, vertice) -> bool:
+        """Devuelve True si el vertice pertenece al grafo, False de lo contrario."""
+        if vertice in self.vertices:
+            return True
+        return False
+    
+class Grafo:
+    """Conjunto de vértices (o nodos) y un conjunto de aristas (o arcos, o relaciones)."""
+    def __init__(self) -> None:
+        """Crea un grafo vacio."""
+        self.adjecencias: dict{set} 
+
+    def add_node(self, vertice: Any) -> None:
+        """Agrega un nodo al grafo."""
+        if vertice not in self.adjacencias:
+            self.adjacencias[vertice] = set()
+        else:
+            print(f"El vertice {vertice} ya existe.")
+        return
+
+    def add_edge(self, vertice1: Any, vertice2: Any) -> None:
+        """Agrega una arista entre los vertices 1 y 2 pasados como argumento."""
+        self.add_node(vertice1)
+        self.add_node(vertice2)
+        if vertice1 not in self.adjacencias[vertice2]:
+            self.adjacencias[vertice1].add(vertice2)
+        if vertice2 not in self.adjacencias[vertice1]:
+            self.adjacencias[vertice2].add(vertice1)
+        return
+    
+    def get_adjacent(self, vertice: Any) -> list[Any]:
+        """Devuelve una lista de todos los vertices adyacentes al vetice pasado como argumento."""
+        return list(self.adjacencias[vertice])
+
+    def get_nodes(self) -> list[Any]:
+        """Devuelve una lista con todos los vertices del grafo."""
+        return list(self.adjacencias)
+
+    def remove_node(self, vertice: Any) -> None:
+        """Remueve el vertice (si existe) y tambien sus aristas adyacentes."""
+        if vertice in self.adjacencias:
+            for vert in self.adjacencias[vertice]:
+                vert.remove(vertice)
+            self.adjacencias.pop[vertice]
+        else:
+            print("El vertice no se encuentra en el grafo.")
+        return
+
+    def remove_edge(self, vertice1: Any, vertice2: Any) -> None:
+        """Remueve (si es que existe) la arista entre el vertice1 y el vertice2."""
+        if vertice1 in self.aristas[vertice2]:
+            if self.are_adyacent(vertice1, vertice2):
+                self.adjacencias[vertice2].remove(vertice1)
+                self.adjacencias[vertice1].remove(vertice2)
+        return
+
+    def are_adyacent(self, vertice1: Any, vertice2: Any) -> bool:
+        """Devuelve True si los vertices son adyacentes, de lo contrario devuelve False."""
+        if vertice1 in self.adjacencias[vertice2]: # Al ser grafos simples, puedo preguntar por cualquiera de los vertices
+            return True
+        return False
+
+    def is_node(self, vertice) -> bool:
+        """Devuelve True si el vertice pertenece al grafo, False de lo contrario."""
+        if vertice in self.adjacencias:
+            return True
+        return False
+
+def get_edges(G: Grafo) -> list[str]:
+    """Devuelve las aristas del grafo."""
+    edges: set[set] = set()
+    for vertice in G.adjecencias:
+        for vertice2 in vertice:
+            arista = {vertice, vertice2}
+        edges.add(arista)
+    return list(edges)
         
 # Ejemplo de uso
 grafo = Grafo()
