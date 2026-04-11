@@ -1,0 +1,6 @@
+persons
+potted_plant
+laptop
+books
+ms
+5

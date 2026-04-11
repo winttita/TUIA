@@ -1,0 +1,2 @@
+image 1/1 /home/andrea/entorno/tp/375a650373d0f6bc68e3e31d383b23d3bfb451129d27bcab9053fd0cfb23ce85.jpg: 448x640 2 persons, 1 potted plant, 1 laptop, 2 books, 1008.0ms
+Speed: 43.4ms preprocess, 1008.0ms inference, 2292.1ms postprocess per image at shape (1, 3, 448, 640)
