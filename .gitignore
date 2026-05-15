@@ -1,6 +1,6 @@
-desktop.ini
-**/desktop.ini
 title.basics.tsv.gz
 title.basics.tsv
 .RDataTmp
 desktop.ini
+__pycache__/
+*.pyc
