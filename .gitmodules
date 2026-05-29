@@ -1,3 +1,9 @@
 [submodule "Segundo/Programacion III/TP FINAL/tuia-prog3"]
 	path = Segundo/Programacion III/TP FINAL/tuia-prog3
 	url = https://github.com/jqnag8/tuia-prog3.git
+[submodule "Segundo/Probabilidad y Estadistica/TP"]
+	path = Segundo/Probabilidad y Estadistica/TP
+	url = https://github.com/winttita/TP-Final-PyE.git
+[submodule "Segundo/Bases de Datos II/TP"]
+	path = Segundo/Bases de Datos II/TP
+	url = https://github.com/winttita/TP-Final-BDDII.git
