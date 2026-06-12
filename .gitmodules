@@ -7,3 +7,6 @@
 [submodule "Segundo/Bases de Datos II/TP"]
 	path = Segundo/Bases de Datos II/TP
 	url = https://github.com/winttita/TP-Final-BDDII.git
+[submodule "Segundo/Redes de Datos/TP"]
+	path = Segundo/Redes de Datos/TP
+	url = https://github.com/winttita/TP-Final-RDD.git
