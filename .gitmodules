@@ -10,3 +10,6 @@
 [submodule "Segundo/Redes de Datos/TP"]
 	path = Segundo/Redes de Datos/TP
 	url = https://github.com/winttita/TP-Final-RDD.git
+[submodule "Primero/Entorno de Programacion/TP/tpentorno2025"]
+	path = Primero/Entorno de Programacion/TP/tpentorno2025
+	url = https://github.com/winttita/TP-Final-EDP.git
