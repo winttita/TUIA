@@ -13,3 +13,6 @@
 [submodule "Primero/Entorno de Programacion/TP/tpentorno2025"]
 	path = Primero/Entorno de Programacion/TP/tpentorno2025
 	url = https://github.com/winttita/TP-Final-EDP.git
+[submodule "Primero/Bases de Datos I/TP FINAL"]
+	path = Primero/Bases de Datos I/TP FINAL
+	url = https://github.com/winttita/TP-Final-BDDI.git
