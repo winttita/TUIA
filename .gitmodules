@@ -16,3 +16,6 @@
 [submodule "Primero/Bases de Datos I/TP FINAL"]
 	path = Primero/Bases de Datos I/TP FINAL
 	url = https://github.com/winttita/TP-Final-BDDI.git
+[submodule "Segundo/Procesamiento del Lenguaje Natural"]
+	path = Segundo/Procesamiento del Lenguaje Natural
+	url = https://github.com/winttita/Natural_Language_Processing.git
