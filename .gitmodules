@@ -22,3 +22,6 @@
 [submodule "Segundo/Procesamiento del Lenguaje Natural/TPs"]
 	path = Segundo/Procesamiento del Lenguaje Natural/TPs
 	url = https://github.com/valentinocivetta04/PLN_Grupo7_Civetta_Fucci_Frank_Winter.git
+[submodule "Segundo/Mineria de datos/TPs"]
+	path = Segundo/Mineria de datos/TPs
+	url = https://github.com/winttita/TP_MD_Frank_Winter.git

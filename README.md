@@ -2,7 +2,7 @@
 
 Repositorio académico con el material y los trabajos prácticos desarrollados a lo largo de la **Tecnicatura Universitaria en Inteligencia Artificial (TUIA)**, dictada por la **Facultad de Ciencias Exactas, Ingeniería y Agrimensura (FCEIA) de la Universidad Nacional de Rosario (UNR)**.
 
-Incluye únicamente las materias que requieren desarrollo de código (programación, bases de datos, estadística aplicada y redes), organizadas por año y cuatrimestre. Varios de los trabajos prácticos finales fueron realizados en grupo y se versionan en repositorios propios, integrados aquí como **submódulos de Git**.
+Incluye únicamente las materias que requieren desarrollo de código (programación, bases de datos, estadística aplicada, redes, ciencia de datos e inteligencia artificial), organizadas por año y cuatrimestre. Varios de los trabajos prácticos finales fueron realizados en grupo y se versionan en repositorios propios, integrados aquí como **submódulos de Git**.
 
 ---
 
@@ -27,19 +27,23 @@ git submodule update --init --recursive
 ```
 TUIA/
 ├── Primero/
-│   ├── Entorno de Programacion/      # Linux, shell, control de versiones, Docker
-│   ├── Programacion I/               # Fundamentos de programación en Python
-│   ├── Programacion II/              # Recursión, POO, TADs, árboles y grafos
-│   └── Bases de Datos I/             # Modelo relacional, SQL, normalización
+│   ├── Entorno de Programacion/          # Linux, shell, control de versiones, Docker
+│   ├── Programacion I/                   # Fundamentos de programación en Python
+│   ├── Programacion II/                  # Recursión, POO, TADs, árboles y grafos
+│   └── Bases de Datos I/                 # Modelo relacional, SQL, normalización
 └── Segundo/
-    ├── Bases de Datos II/            # Data warehousing, modelado dimensional, OLAP
-    ├── Fundamento de Ciencia de Datos/ # Análisis y visualización de datos
-    ├── Probabilidad y Estadistica/   # Probabilidad, inferencia y estimación
-    ├── Programacion III/             # Inteligencia artificial: búsqueda y juegos
-    └── Redes de Datos/               # Redes, modelo OSI/TCP-IP, CCNA, APIs REST
+    ├── Bases de Datos II/                # Data warehousing, modelado dimensional, OLAP
+    ├── Fundamento de Ciencia de Datos/   # Análisis y visualización de datos
+    ├── Probabilidad y Estadistica/       # Probabilidad, inferencia y estimación
+    ├── Programacion III/                 # Inteligencia artificial: búsqueda y juegos
+    ├── Redes de Datos/                   # Redes, modelo OSI/TCP-IP, CCNA, APIs REST
+    ├── Aprendizaje Automatico I/         # Regresión, clasificación, MLOps, redes neuronales
+    ├── Mineria de datos/                 # Reducción de dimensionalidad, clustering, asociación
+    ├── Procesamiento de Imagenes I/      # Filtrado espacial y frecuencial, morfología, color
+    └── Procesamiento del Lenguaje Natural/ # Extracción de texto, vectorización, NLP
 ```
 
-Cada carpeta de materia agrupa, según corresponda, los apuntes y resúmenes de cátedra, las prácticas de los distintos ejes temáticos, los parciales resueltos y el trabajo práctico final.
+Cada carpeta de materia agrupa, según corresponda, los apuntes y resúmenes de cátedra organizados por unidad (`U0`, `U1`, `U2`...), notebooks de práctica, datasets de trabajo, y el o los trabajos prácticos finales.
 
 ---
 
@@ -63,12 +67,43 @@ Cada carpeta de materia agrupa, según corresponda, los apuntes y resúmenes de 
 | 1° | [Probabilidad y Estadística](./Segundo/Probabilidad%20y%20Estadistica/) | Probabilidad, distribuciones muestrales, estimación e intervalos de confianza |
 | 1° | [Programación III](./Segundo/Programacion%20III/) | Inteligencia artificial: búsqueda informada/no informada, juegos adversarios y CSP |
 | 1° | [Redes de Datos](./Segundo/Redes%20de%20Datos/) | Modelos de red, direccionamiento IP, ruteo y APIs REST (orientado a CCNA) |
+| 2° | [Aprendizaje Automático I](./Segundo/Aprendizaje%20Automatico%20I/) | Análisis exploratorio, modelos lineales de regresión y clasificación, comparación/ajuste de modelos, MLOps, introducción a redes neuronales |
+| 2° | [Minería de Datos](./Segundo/Mineria%20de%20datos/) | Fundamentos de minería de datos, tipología de algoritmos, reducción de dimensionalidad |
+| 2° | [Procesamiento de Imágenes I](./Segundo/Procesamiento%20de%20Imagenes%20I/) | Fundamentos de imagen digital, transformación y filtrado espacial/frecuencial |
+| 2° | [Procesamiento del Lenguaje Natural](./Segundo/Procesamiento%20del%20Lenguaje%20Natural/) | Extracción y limpieza de texto, representación vectorial (frecuentista) |
+
+> Las materias del 2° cuatrimestre de Segundo año corresponden al 4° cuatrimestre de la carrera y están en curso: su contenido se irá completando unidad por unidad a medida que avance la cátedra.
+
+---
+
+## Detalle de materias en curso (4° cuatrimestre)
+
+### Aprendizaje Automático I
+- `U0 - EDA`: análisis exploratorio de datos y correlación.
+- `U1 - Introduccion al Aprendizaje Automatico`: apuntes de clase.
+- `U2 - Regresion Lineal`: análisis descriptivo, gradiente descendiente, regularización, notebooks y datasets asociados.
+- `TPs/` (submódulo): TP1 de Regresión Lineal con descenso de gradiente (informe y notebooks); TP2 aún no iniciado.
+
+### Minería de Datos
+- `U1 - Introduccion`: apuntes y dataset de ejemplo (IECM).
+- `U2 - Reduccion de Dimensionalidad`: apuntes, script en Python y dataset (`star-dataset.csv`).
+
+### Procesamiento de Imágenes I
+- `Programa.pdf`: programa oficial de la cátedra.
+- `U1 - Introduccion`: fundamentos de imagen digital, con código y ejercicios resueltos.
+- `U2 - Transformacion y Filtrado`: filtrado espacial y frecuencial, con código, ejercicios y material extra.
+
+### Procesamiento del Lenguaje Natural
+- `U1 - Extraccion y Procesamiento de Texto`: apuntes, ejemplos de codificación de caracteres y notebooks de práctica.
+- `U2 - Representacion Vectorial de Texto`: apuntes y notebook de vectorización frecuentista.
+- `TPs/` (submódulo): TP1 de scraping (Playwright + BeautifulSoup) sobre una categoría de libros de Lectulandia, con diseño de extracción documentado, en desarrollo.
+- Material adicional: diccionario de lunfardo para prácticas de normalización de texto, y guía de metodología de informes de la cátedra.
 
 ---
 
 ## Trabajos prácticos en submódulos
 
-Los siguientes trabajos prácticos finales se desarrollaron en equipo y se mantienen en repositorios independientes, integrados aquí como submódulos:
+Los siguientes trabajos prácticos finales o grupales se desarrollan en equipo y se mantienen en repositorios independientes, integrados aquí como submódulos:
 
 | Materia | Submódulo | Descripción |
 |---|---|---|
@@ -78,6 +113,8 @@ Los siguientes trabajos prácticos finales se desarrollaron en equipo y se manti
 | Probabilidad y Estadística | [TP-Final-PyE](https://github.com/winttita/TP-Final-PyE) | Análisis estadístico en R sobre el dataset público de IMDb, siguiendo el ciclo PPDAC e intervalos de confianza |
 | Programación III | [tuia-prog3](https://github.com/jqnag8/tuia-prog3) | Tres trabajos de inteligencia artificial en Python: solver de TSP (búsqueda local), Tateti con algoritmo Minimax y buscador de caminos (DFS/BFS/UCS/GBFS/A*) |
 | Redes de Datos | [TP-Final-RDD](https://github.com/winttita/TP-Final-RDD) | Diseño e implementación de una API REST como trabajo final de la materia |
+| Aprendizaje Automático I | [TP_AA1_Civetta_Fucci_Frank_Winter](https://github.com/valentinocivetta04/TP_AA1_Civetta_Fucci_Frank_Winter) | TP grupal: TP1 de regresión lineal con descenso de gradiente sobre dataset de precios de viviendas (en curso) |
+| Procesamiento del Lenguaje Natural | [PLN_Grupo7_Civetta_Fucci_Frank_Winter](https://github.com/valentinocivetta04/PLN_Grupo7_Civetta_Fucci_Frank_Winter) | TP grupal: scraper con Playwright/BeautifulSoup para extraer metadatos y sinopsis de libros de una categoría de Lectulandia (en curso) |
 
 > Al ser submódulos, su contenido puede tener su propio README con instrucciones de instalación y ejecución específicas.
 
@@ -88,9 +125,10 @@ Los siguientes trabajos prácticos finales se desarrollaron en equipo y se manti
 A lo largo de la carrera se trabajó con un conjunto variado de lenguajes y herramientas:
 
 - **Lenguajes:** Python, SQL (T-SQL), R
-- **Datos y BI:** Jupyter Notebook, pandas, Power BI, SSIS
+- **Datos y BI:** Jupyter Notebook, pandas, scikit-learn, Power BI, SSIS
 - **Bases de datos:** SQL Server, modelado relacional y dimensional
 - **Redes:** Cisco Packet Tracer (CCNA)
+- **Web scraping:** Playwright, BeautifulSoup
 - **Infraestructura:** Docker, Git y GitHub (incluyendo submódulos)
 
 ---
