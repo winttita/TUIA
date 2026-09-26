@@ -25,3 +25,6 @@
 [submodule "Segundo/Mineria de datos/TPs"]
 	path = Segundo/Mineria de datos/TPs
 	url = https://github.com/winttita/TP_MD_Frank_Winter.git
+[submodule "Segundo/Procesamiento de Imagenes I/TPs"]
+	path = Segundo/Procesamiento de Imagenes I/TPs
+	url = https://github.com/valentinocivetta04/Procesamiento_Imagenes_Grupo8.git
